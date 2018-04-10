@@ -102,7 +102,8 @@ def conv(tempe):
     tempe = tempe - 32
     tempe = tempe / (9/5)
     tempe = round(tempe,2)
-    return str(tempe)
+    tempe = str(tempe)
+    return tempe
 
     # print(json.dumps(item, indent=4))
     test =  conv(condition.get('temp'))
