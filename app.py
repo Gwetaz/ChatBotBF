@@ -105,9 +105,9 @@ def conv(tempe):
     return str(tempe)
 
     # print(json.dumps(item, indent=4))
-
+    test =  conv(condition.get('temp'))
     speech = "Aujourd'hui la météo à " + location.get('city') + " est : " + condition.get('text') + \
-             ", et la température est de " + conv(condition.get('temp')) + " " + "°C"
+             ", et la température est de " + test + " " + "°C"
 
     print("Response:")
     print(speech)
