@@ -92,14 +92,14 @@ def makeWebhookResult(data):
     if (location is None) or (item is None) or (units is None):
         return {}
 
-    condition = item.get('condition')
+    condition = (item.get('condition') - 32 ) / (9/5)
     if condition is None:
         return {}
 
     # print(json.dumps(item, indent=4))
 
     speech = "Aujourd'hui la météo de  " + location.get('city') + " est : " + condition.get('text') + \
-             ", La température est de : " + condition.get('temp') + " " + units.get('temperature')
+             ", La température est de : " + condition.get('temp') + " " + "°C"
 
     print("Response:")
     print(speech)
