@@ -96,16 +96,18 @@ def makeWebhookResult(data):
     if condition is None:
         return {}
     
-    temp = condition.get('temp')
-    temp = float(temp)
-    temp = temp - 32
-    temp = temp / (9/5)
-    temp = round(temp,2)
+def conv(tempe):    
+    
+    tempe = float(tempe)
+    tempe = tempe - 32
+    tempe = tempe / (9/5)
+    tempe = round(tempe,2)
+    return str(tempe)
 
     # print(json.dumps(item, indent=4))
 
     speech = "Aujourd'hui la météo à " + location.get('city') + " est : " + condition.get('text') + \
-             ", et la température est de " + str(temp) + " " + "°C"
+             ", et la température est de " + conv(condition.get('temp')) + " " + "°C"
 
     print("Response:")
     print(speech)
