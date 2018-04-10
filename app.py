@@ -70,7 +70,7 @@ def makeYqlQuery(req):
     if city is None:
         return None
 
-    return "select * from weather.forecast where woeid in (select woeid from geo.places(2) where text='" + city + "')"
+    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
 
 
 def makeWebhookResult(data):
@@ -95,11 +95,15 @@ def makeWebhookResult(data):
     condition = item.get('condition')
     if condition is None:
         return {}
+    
+    temp = condition.get('temp')
+    temp = int(temp)
+    temp = temp - 32
 
     # print(json.dumps(item, indent=4))
 
     speech = "Aujourd'hui la météo à " + location.get('city') + " est : " + condition.get('text') + \
-             ", et la température est de " + condition.get('temp') + " " + units.get('temperature')
+             ", et la température est de " + str(temp) + " " + units.get('temperature')
 
     print("Response:")
     print(speech)
