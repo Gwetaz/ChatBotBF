@@ -97,8 +97,9 @@ def makeWebhookResult(data):
         return {}
     
     temp = condition.get('temp')
-    temp = int(temp)
+    temp = float(temp)
     temp = temp - 32
+    temp = temp / (9/5)
 
     # print(json.dumps(item, indent=4))
 
