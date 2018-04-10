@@ -97,7 +97,7 @@ def makeWebhookResult(data):
         return {}
                  
                  
-    tempe = condition.get('temp');
+    tempe = condition.get('temp')
 
     # print(json.dumps(item, indent=4))
 
