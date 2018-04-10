@@ -92,7 +92,7 @@ def makeWebhookResult(data):
     if (location is None) or (item is None) or (units is None):
         return {}
 
-    condition = (item.get('condition') - 32 ) / (9/5)
+    condition = ((item.get('condition') - 32 ) / (9/5)
     if condition is None:
         return {}
 
