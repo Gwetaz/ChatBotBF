@@ -72,6 +72,14 @@ def makeYqlQuery(req):
 
     return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
 
+def conv(tempe):    
+    
+    tempe = float(tempe)
+    tempe = tempe - 32
+    tempe = tempe / (9/5)
+    tempe = round(tempe,2)
+    tempe = str(tempe)
+    return tempe
 
 def makeWebhookResult(data):
     query = data.get('query')
@@ -96,14 +104,7 @@ def makeWebhookResult(data):
     if condition is None:
         return {}
     
-def conv(tempe):    
-    
-    tempe = float(tempe)
-    tempe = tempe - 32
-    tempe = tempe / (9/5)
-    tempe = round(tempe,2)
-    tempe = str(tempe)
-    return tempe
+
 
     # print(json.dumps(item, indent=4))
     test =  conv(condition.get('temp'))
