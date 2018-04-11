@@ -68,7 +68,7 @@ def processRequest(req):
     res = makeWebhookResult2(data)
     return res
 
- else yql_query is None:
+ else:
         return {}
 
 
