@@ -101,14 +101,7 @@ def makeYqlQuery2(req):
         return None
 #err1?
     return "select item.forecast.date,location.city,item.forecast.text,item.forecast.high,item.forecast.low from weather.forecast where woeid in (select woeid from geo.places(1) where text=' " + city + " ') and item.forecast.date = '"+ date + "' "
-
-
-
     
-    
-    
-    
-
 def conv(tempe):    
     
     tempe = float(tempe)
