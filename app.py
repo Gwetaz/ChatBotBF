@@ -81,6 +81,16 @@ def makeYqlQuery(req):
 
     return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
 
+def formatD(dateu):
+    
+    sousa = dateu[8:10]
+    sousb = dateu[0:4]
+    sousc= dateu[5:7]
+    
+    choices = {"01": "Jan","02":"Fev","03":"Mar", "04" : "Apr", "05" : "May","06":"Jun"}
+    result = choices.get(sousc, 'default')
+    
+    return sousa+" "+result+" "+sousb
 
 def makeYqlQuery2(req):
     result = req.get("result")
@@ -93,16 +103,7 @@ def makeYqlQuery2(req):
     return "select item.forecast.text,item.forecast.high,item.forecast.low from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "') and date = '"+ date + "' "
 
 
-def formatD(date):
-    
-    sousa = date[8:10]
-    sousb = date[0:4]
-    sousc= date[5:7]
-    
-    choices = {"01": "Jan","02":"Fev","03":"Mar", "04" : "Apr", "05" : "May","06":"Jun"}
-    result = choices.get(sousc, 'default')
-    
-    return sousa+" "+result+" "+sousb
+
     
     
     
