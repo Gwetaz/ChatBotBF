@@ -114,7 +114,7 @@ def conv(tempe):
     tempe = float(tempe)
     tempe = tempe - 32
     tempe = tempe / (9/5)
-    tempe = round(tempe,2)
+    tempe = round(tempe,1)
     tempe = str(tempe)
     return tempe
 
@@ -123,7 +123,7 @@ def moy(var,var2):
     var = float(var)
     var2 = float(var2)
     var = (var + var2) / 2
-    var = round(var,2)
+    var = round(var,1)
     var = str(var)
     return var
 
