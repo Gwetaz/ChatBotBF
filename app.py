@@ -50,17 +50,26 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") != "yahooWeatherForecast":
-        return {}
+ if   req.get("result").get("action") == "yahooWeatherForecast":
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
-    if yql_query is None:
-        return {}
     yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
     result = urlopen(yql_url).read()
     data = json.loads(result)
     res = makeWebhookResult(data)
     return res
+
+ elif req.get("result").get("action") == "yahooWeatherFivecast":
+    baseurl = "https://query.yahooapis.com/v1/public/yql?"
+    yql_query = makeYqlQuery2(req)
+    yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
+    result = urlopen(yql_url).read()
+    data = json.loads(result)
+    res = makeWebhookResult2(data)
+    return res
+
+ else yql_query is None:
+        return {}
 
 
 def makeYqlQuery(req):
@@ -71,6 +80,33 @@ def makeYqlQuery(req):
         return None
 
     return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
+
+
+def makeYqlQuery2(req):
+    result = req.get("result")
+    parameters = result.get("parameters")
+    city = parameters.get("geo-city")
+    date = parameters.get("date");
+    if city is None:
+        return None
+
+    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "') and date = '"formatD(date)"' "
+
+
+def formatD(date):
+    
+    sousa = date[8:10]
+    sousb = date[0:4]
+    sousc= date[5:7]
+    
+    choices = {"01": "Jan","02":"Fev","03":"Mar", "04" : "Apr", "05" : "May","06":"Jun"}
+    result = choices.get(sousc, 'default')
+    
+    return sousa+" "+result+" "+sousb
+    
+    
+    
+    
 
 def conv(tempe):    
     
