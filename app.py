@@ -173,11 +173,6 @@ def makeWebhookResult2(data):
   
 
     item = channel.get('item')
-    location = channel.get('location')
-    units = channel.get('units')
-    if (location is None) or (item is None) or (units is None):
-        return {}
-    
     forecast = item.get('forecast')
 
   
@@ -185,8 +180,8 @@ def makeWebhookResult2(data):
 
 
     # print(json.dumps(item, indent=4))
-    test =  conv(condition.get('temp'))
-    speech = "A la date de "+date+" la météo à " + location.get('city') + " est : " + condition.get('text') + \
+    test =  conv(forecast.get('high'))
+    speech = "la météo est : " + forecast.get('text') + \
              ", et la température est de " + test + " " + "°C"
 
     print("Response:")
