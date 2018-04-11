@@ -100,7 +100,7 @@ def makeYqlQuery2(req):
     if city is None:
         return None
 #err1?
-    return "select location.city,item.forecast.text,item.forecast.high,item.forecast.low from weather.forecast where woeid in (select woeid from geo.places(1) where text=' " + city + " ') and item.forecast.date = '"+ date + "' "
+    return "select item.forecast.date,location.city,item.forecast.text,item.forecast.high,item.forecast.low from weather.forecast where woeid in (select woeid from geo.places(1) where text=' " + city + " ') and item.forecast.date = '"+ date + "' "
 
 
 
@@ -183,7 +183,8 @@ def makeWebhookResult2(data):
   
 
     item = channel.get('item')
-    location = channel.get('location.city')
+    location = channel.get('location')
+    city = location.get('city')
     forecast = item.get('forecast')
 
   
@@ -192,7 +193,7 @@ def makeWebhookResult2(data):
 
     # print(json.dumps(item, indent=4))
     test =  conv(moy(forecast.get('high'),forecast.get('low')))
-    speech = "la météo de "+ location + "est : " + forecast.get('text') + \
+    speech = "la météo de "+ city + " le "+date+" est : " + forecast.get('text') + \
              ", et la température est de " + test + " " + "°C \n Redonne moi une ville !"
 
     print("Response:")
