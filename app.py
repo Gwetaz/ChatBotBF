@@ -90,7 +90,7 @@ def makeYqlQuery2(req):
     if city is None:
         return None
 
-    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "') and date = '"formatD(date)"' "
+    return "select item.forecast.text,item.forecast.high,item.forecast.low from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "') and date = '"formatD(date)"' "
 
 
 def formatD(date):
@@ -157,6 +157,48 @@ def makeWebhookResult(data):
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
     }
+
+def makeWebhookResult2(data):
+    query = data.get('query')
+    if query is None:
+        return {}
+
+    result = query.get('results')
+    if result is None:
+        return {}
+
+    channel = result.get('channel')
+    if channel is None:
+        return {}
+  
+
+    item = channel.get('item')
+    location = channel.get('location')
+    units = channel.get('units')
+    if (location is None) or (item is None) or (units is None):
+        return {}
+    
+    forecast = item.get('forecast')
+
+  
+    
+
+
+    # print(json.dumps(item, indent=4))
+    test =  conv(condition.get('temp'))
+    speech = "A la date de "+date+" la météo à " + location.get('city') + " est : " + condition.get('text') + \
+             ", et la température est de " + test + " " + "°C"
+
+    print("Response:")
+    print(speech)
+
+    return {
+        "speech": speech,
+        "displayText": speech,
+        # "data": data,
+        # "contextOut": [],
+        "source": "apiai-weather-webhook-sample"
+}
 
 
 if __name__ == '__main__':
