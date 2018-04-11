@@ -183,7 +183,7 @@ def makeWebhookResult2(data):
   
 
     item = channel.get('item')
-    location = channel.get('location')
+    location = channel.get('location.city')
     forecast = item.get('forecast')
 
   
