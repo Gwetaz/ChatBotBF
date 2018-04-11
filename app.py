@@ -118,7 +118,7 @@ def conv(tempe):
     tempe = str(tempe)
     return tempe
 
-def moy(var,var2)
+def moy(var,var2):
     
     var = float(var)
     var2 = float(var2)
