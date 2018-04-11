@@ -118,6 +118,15 @@ def conv(tempe):
     tempe = str(tempe)
     return tempe
 
+def moy(var,var2)
+    
+    var = float(var)
+    var2 = float(var2)
+    var = (var + var2) / 2
+    var = round(var,2)
+    var = str(var)
+    return var
+
 def makeWebhookResult(data):
     query = data.get('query')
     if query is None:
@@ -181,7 +190,7 @@ def makeWebhookResult2(data):
 
 
     # print(json.dumps(item, indent=4))
-    test =  conv(forecast.get('high'))
+    test =  conv(moy(forecast.get('high'),forecast.get('low')))
     speech = "la météo est : " + forecast.get('text') + \
              ", et la température est de " + test + " " + "°C"
 
