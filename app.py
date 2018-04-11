@@ -86,11 +86,11 @@ def makeYqlQuery2(req):
     result = req.get("result")
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
-    date = parameters.get("date");
+    date = formatD(parameters.get("date"))
     if city is None:
         return None
 #err1?
-    return "select item.forecast.text,item.forecast.high,item.forecast.low from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "') and date = '"formatD(date)"' "
+    return "select item.forecast.text,item.forecast.high,item.forecast.low from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "') and date = '"+ date + "' "
 
 
 def formatD(date):
