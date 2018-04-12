@@ -187,7 +187,7 @@ def makeWebhookResult2(data):
     # print(json.dumps(item, indent=4))
     test =  conv(moy(forecast.get('high'),forecast.get('low')))
     speech = "la météo de "+ city + " le "+forecast.get('date')+" est : " + forecast.get('text') + \
-             ", et la température est de " + test + " " + "°C \n Redonne moi une ville !"
+             ", et la température est de " + test + " " + "°C \n Tu peux me donner un nouveau jour ou redonne moi une ville  !"
 
     print("Response:")
     print(speech)
