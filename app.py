@@ -73,7 +73,7 @@ def processRequest(req):
 
 
 def makeYqlQuery(req):
-    result = req.get("result")
+    result = req.get("queryResult")
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
     if city is None:
@@ -93,7 +93,7 @@ def formatD(dateu):
     return sousa+" "+result+" "+sousb
 
 def makeYqlQuery2(req):
-    result = req.get("result")
+    result = req.get("queryResult")
     parameters = result.get("parameters")
     city = parameters.get("city")
     date = formatD(parameters.get("date"))
