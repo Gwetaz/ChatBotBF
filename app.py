@@ -158,7 +158,7 @@ def makeWebhookResult(data):
         "text" : [ speech ],
         # "data": data,
         # "contextOut": [],
-        "source": "apiai-weather-webhook-sample"
+        #"source": "apiai-weather-webhook-sample"
     }
 
 def makeWebhookResult2(data):
@@ -168,7 +168,7 @@ def makeWebhookResult2(data):
 
     result = query.get('results')
     if result is None:
-        return {}
+        return {}so
 
     channel = result.get('channel')
     if channel is None:
@@ -197,7 +197,7 @@ def makeWebhookResult2(data):
         "text": [ speech ],
         # "data": data,
         # "contextOut": [],
-        "source": "apiai-weather-webhook-sample"
+       # "source": "apiai-weather-webhook-sample"
 }
 
 
