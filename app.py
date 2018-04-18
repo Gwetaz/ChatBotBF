@@ -168,7 +168,7 @@ def makeWebhookResult2(data):
 
     result = query.get('results')
     if result is None:
-        return {}so
+        return {}
 
     channel = result.get('channel')
     if channel is None:
