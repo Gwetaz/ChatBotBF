@@ -50,7 +50,7 @@ def webhook():
 
 
 def processRequest(req):
- if   req.get("result").get("action") == "yahooWeatherForecast":
+ if   req.get("queryResult").get("action") == "yahooWeatherForecast":
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
     yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
@@ -59,7 +59,7 @@ def processRequest(req):
     res = makeWebhookResult(data)
     return res
 
- elif req.get("result").get("action") == "yahooWeatherFivecast":
+ elif req.get("queryResult").get("action") == "yahooWeatherFivecast":
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery2(req)
     yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
