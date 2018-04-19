@@ -22,7 +22,7 @@ app = Flask(__name__)
 baseurl = "https://brittany-ferries-holidays-api-ferries-apis.ngpb.io/v1/"
 
 
-@app.route('/webhook', methods=['GET'])
+@app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
 
