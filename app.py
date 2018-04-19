@@ -22,7 +22,7 @@ from flask import make_response
 app = Flask(__name__)
 
 
-@app.route('/webhook', methods=['POST'])
+@app.route('/webhook', methods=['GET'])
 def webhook():
     req = request.get_json(silent=True, force=True)
 
@@ -39,8 +39,9 @@ def webhook():
 
 
 def processRequest(req):
- if   req.get("queryResult").get("action") == "yahooWeatherForecast":
-    baseurl = "https://query.yahooapis.com/v1/public/yql?"
+ if   req.get("queryResult").get("action") == "TraverserVV":
+    baseurl = "https://brittany-ferries-holidays-api-ferries-apis.ngpb.io/v1/"
+   
     yql_query = makeYqlQuery(req)
     yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
     result = urlopen(yql_url).read()
@@ -64,11 +65,13 @@ def processRequest(req):
 def makeYqlQuery(req):
     result = req.get("queryResult")
     parameters = result.get("parameters")
-    city = parameters.get("geo-city")
-    if city is None:
-        return None
+    depart = parameters.get("dpart")
+   context = result.get("outputContexts")
+    desti = result.get("PortsBAI")
+    date = parameter.get("date")
+    
 
-    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
+    return "select * from weather.forecast where"
 
 def formatD(dateu):
     
