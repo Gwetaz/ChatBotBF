@@ -44,6 +44,7 @@ def processRequest(req):
    
     yql_query = makeYqlQuery(req)
     yql_url = baseurl +"crossings?"+yql_query
+    print(yql_url)
     result = urlopen(yql_url).read()
     data = json.loads(result)
     res = makeWebhookResult(data)
