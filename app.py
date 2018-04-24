@@ -31,8 +31,13 @@ def webhook():
     print(json.dumps(req, indent=4))
     
     print("test Avant processReq")
+    print(req)
 
     res = processRequest(req)
+    
+    print("test Apres processReq")
+    print(res)
+    
 
     res = json.dumps(res, indent=4)
     print(res)
@@ -44,7 +49,7 @@ def webhook():
 def processRequest(req):
  if   req.get("queryResult").get("action") == "TraverserVV":
     
-   
+    print("avant makeYql")
     yql_query = makeYqlQuery(req)
     yql_url = baseurl +"crossings?"+yql_query
     print(yql_url)
