@@ -69,7 +69,7 @@ def makeYqlQuery(req):
     parameters = result.get("parameters")
     depart = CodePort(parameters.get("dpart"))
     print(depart)
-    context = result.get("outputContexts")
+    context = result.get("outputContexts[0]")
     desti = CodePort(context.get("PortsBAI"))
     print(desti)
     date = parameter.get("date")
