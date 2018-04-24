@@ -43,7 +43,7 @@ def processRequest(req):
     
    
     yql_query = makeYqlQuery(req)
-    yql_url = baseurl + urlencode({'q': yql_query}) 
+    yql_url = baseurl +"crossings?"+yql_query
     result = urlopen(yql_url).read()
     data = json.loads(result)
     res = makeWebhookResult(data)
@@ -62,9 +62,11 @@ def makeYqlQuery(req):
     context = result.get("outputContexts")
     desti = CodePort(context.get("PortsBAI"))
     date = parameter.get("date")
+    dateMod = urlencode({ 'q' : date})[2:35]
+  
     
 
-    return "departure_ports = "+depart+"arrival_ports ="+desti+"date_from = "+date
+    return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="dateMod
 
 def CodePort(por):
     choices = {"Le Havre":"FRLEH","Portsmouth":"GBPME","Bilbao":"ESBIO","Plymouth":"GBPLY","Cork":"IEORK","Roscoff":"FRROS","Poole":"GBPOO","Cherbourg":"FRCER","St Malo":"FRSML","Ouistrham":"FROUI","Santander":"ESSDR"}
