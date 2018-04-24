@@ -32,7 +32,7 @@ def webhook():
     res = processRequest(req)
 
     res = json.dumps(res, indent=4)
-    # print(res)
+    print(res)
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
     return r
@@ -91,7 +91,6 @@ def makeWebhookResult(data):
 
     return {
         
-        "fulfillmentText" : speech,
         "fulfillmentText" : speech,
         # "data": data,
         # "contextOut": [],
