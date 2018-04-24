@@ -68,10 +68,13 @@ def makeYqlQuery(req):
     result = req.get("queryResult")
     parameters = result.get("parameters")
     depart = CodePort(parameters.get("dpart"))
+    print(depart)
     context = result.get("outputContexts")
     desti = CodePort(context.get("PortsBAI"))
+    print(desti)
     date = parameter.get("date")
     dateMod = urlencode({ 'q' : date})[2:35]
+    print(dateMod)
   
     
 
