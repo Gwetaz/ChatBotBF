@@ -27,7 +27,10 @@ def webhook():
     req = request.get_json(silent=True, force=True)
 
     print("Request:")
+    print("test Avant dumps")
     print(json.dumps(req, indent=4))
+    
+    print("test Avant processReq")
 
     res = processRequest(req)
 
