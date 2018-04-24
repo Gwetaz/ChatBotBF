@@ -66,7 +66,7 @@ def makeYqlQuery(req):
   
     
 
-    return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="dateMod
+    return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
 
 def CodePort(por):
     choices = {"Le Havre":"FRLEH","Portsmouth":"GBPME","Bilbao":"ESBIO","Plymouth":"GBPLY","Cork":"IEORK","Roscoff":"FRROS","Poole":"GBPOO","Cherbourg":"FRCER","St Malo":"FRSML","Ouistrham":"FROUI","Santander":"ESSDR"}
