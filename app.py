@@ -55,10 +55,11 @@ def processRequest(req):
     print(yql_url)
     q = Request(yql_url)
     q.add_header('Authorization: Bearer ', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTaG9ydEJyZWFrcyIsInJvbGVzIjoiUk9MRV9DVVNUT01FUiIsImlzcyI6IkJyaXRhbnkgRmVycmllcyIsImlhdCI6MTUyMjc0MjEwNCwianRpIjoiMjcxYzA2ZGMtOGQ4YS00YTZmLWE1ZDYtMDRiZThlNzEyMmU4In0.RD4zhr5Ve2Vkay-_6_ZRzKxgbjnG6B1YKZS3bazS9vs')
-    result = urlopen(q).read()
-    data = json.loads(result)
-    res = makeWebhookResult(data)
-    return res
+    print(q)
+    #result = urlopen(q).read()
+    #data = json.loads(result)
+    #res = makeWebhookResult(data)
+    #return res
 
 
 
