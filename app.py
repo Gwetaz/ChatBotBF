@@ -71,7 +71,7 @@ def makeYqlQuery(req):
     print(depart)
     context = result.get("outputContexts")
     print(context[0])
-    desti = CodePort(context.get("PortsBAI"))
+    desti = CodePort(context[0].get("PortsBAI"))
     print(desti)
     date = parameter.get("date")
     dateMod = urlencode({ 'q' : date})[2:35]
