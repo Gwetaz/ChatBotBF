@@ -53,8 +53,8 @@ def processRequest(req):
     yql_query = makeYqlQuery(req)
     yql_url = baseurl +"crossings?"+yql_query
     print(yql_url)
-    result = urlopen(yql_url).read()
-    data = json.loads(result)
+    #result = urlopen(yql_url).read()
+   # data = json.loads(result)
     res = makeWebhookResult(data)
     return res
 
@@ -69,9 +69,10 @@ def makeYqlQuery(req):
     parameters = result.get("parameters")
     depart = CodePort(parameters.get("dpart"))
     print(depart)
-    context = result.get("outputContexts")
-    print(context[0])
-    desti = CodePort(context[0].get("PortsBAI"))
+    contexttab = result.get("outputContexts")
+    context = contexttab[0]
+    print(context)
+    desti = CodePort(context.get("PortsBAI"))
     print(desti)
     date = parameter.get("date")
     dateMod = urlencode({ 'q' : date})[2:35]
