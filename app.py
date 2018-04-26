@@ -110,7 +110,7 @@ def makeWebhookResult(data):
 
     speech = "le ferry que vous prendrez est :"+ship
     return {
-        "FulfillmentText": speech
+        "fulfillmentText": speech
     }
 
 
