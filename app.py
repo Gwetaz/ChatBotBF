@@ -115,9 +115,18 @@ def makeWebhookResult(data):
 
     return {        
         "fulfillmentText" : speech,
-        # "data": data,
-        # "contextOut": [],
-        "source": "ChatBotBAI"
+   
+        "fulfillmentMessages": 
+        [
+            {
+                "text":
+                    [
+                       speech
+                    ],
+
+            }
+
+         ], 
 }
 
 
