@@ -61,12 +61,9 @@ def processRequest(req):
     print(URL)
     result = urlopen(URL)
     lu = result.read()
-    print(" Je lis " )
-    print(lu)
     data = json.loads(lu)
-    print(' JAI LU ' )
-    print(data)
     res = makeWebhookResult(data)
+    print(apresWebhook)
     print(res)
     return res
 
@@ -105,7 +102,7 @@ def makeWebhookResult(data):
     if data is None:
         return {}
 
-    ship = data.get('ship_name')
+    ship = data.get('ship_name')[0]
     if ship is None:
         return {}
 
