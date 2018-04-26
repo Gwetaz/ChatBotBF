@@ -62,6 +62,7 @@ def processRequest(req):
     result = urlopen(URL)
     lu = result.read()
     data = json.loads(lu)
+    print('alolemonde')
     res = makeWebhookResult(data)
     print(apresWebhook)
     print(res)
