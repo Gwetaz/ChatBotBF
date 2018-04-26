@@ -113,7 +113,7 @@ def makeWebhookResult(data):
     print("Response:")
     print(speech)
 
-    return {        
+    Display = {        
         "fulfillmentText" : speech,
    
         "fulfillmentMessages": 
@@ -128,6 +128,8 @@ def makeWebhookResult(data):
 
          ], 
 }
+    print(display)
+    return display
 
 
 if __name__ == '__main__':
