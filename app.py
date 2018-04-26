@@ -115,9 +115,9 @@ def makeWebhookResult(data):
 
     return {        
         "fulfillmentText" : speech,
-        "fulfillmentText" : speech
         # "data": data,
         # "contextOut": [],
+        "source": "ChatBotBAI"
 }
 
 
