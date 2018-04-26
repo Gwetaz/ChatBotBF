@@ -100,7 +100,6 @@ def CodePort(por):
 
 def makeWebhookResult(data):
     data = data.get('data')
-    print(data)
     if data is None:
         return {}
 
