@@ -120,8 +120,7 @@ def makeWebhookResult(data):
         "fulfillmentText" : speech,
         # "data": data,
         # "contextOut": [],
-        
-    }
+}
 
 
 if __name__ == '__main__':
