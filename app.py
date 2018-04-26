@@ -99,10 +99,11 @@ def CodePort(por):
 
 def makeWebhookResult(data):
     data = data.get('data')
+    print(data)
     if data is None:
         return {}
 
-    ship = data.get('ship_name')[0]
+    ship = data[0].get('ship_name')
     if ship is None:
         return {}
 
