@@ -56,7 +56,8 @@ def processRequest(req):
    
     yql_url.add_header('Authorization: Bearer', 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTaG9ydEJyZWFrcyIsInJvbGVzIjoiUk9MRV9DVVNUT01FUiIsImlzcyI6IkJyaXRhbnkgRmVycmllcyIsImlhdCI6MTUyMjc0MjEwNCwianRpIjoiMjcxYzA2ZGMtOGQ4YS00YTZmLWE1ZDYtMDRiZThlNzEyMmU4In0.RD4zhr5Ve2Vkay-_6_ZRzKxgbjnG6B1YKZS3bazS9vs')
     print(ylq_url)
-    result = urlopen(yql_url)#.read()
+    result = urlopen(yql_url)
+    #.read()
     print(result)
     data = json.loads(result)
     print(data)
