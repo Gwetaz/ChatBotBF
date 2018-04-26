@@ -108,16 +108,13 @@ def makeWebhookResult(data):
         return {}
 
 
-    speech = "le ferry que vous prendrez est :"+ship 
-
-    print("Response:")
-    print(speech)
-
-    Display =  "fulfillmentText : "+ship     
-       
-              
-    print(display)
-    return display
+    speech = "le ferry que vous prendrez est :"+ship
+    return {
+        "FulfillmentText": speech
+        # "data": data,
+        # "contextOut": [],
+        "source": "apiai-weather-webhook-sample"
+}
 
 
 if __name__ == '__main__':
