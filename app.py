@@ -12,6 +12,8 @@ from urllib.error import HTTPError
 
 import json
 import os
+import sys
+
 
 from flask import Flask
 from flask import request
@@ -25,7 +27,7 @@ baseurl = "https://brittany-ferries-holidays-api-ferries-apis.ngpb.io/v1/"
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
-
+    print (sys.version)
     print("Request:")
     print("test Avant dumps")
     print(json.dumps(req, indent=4))
