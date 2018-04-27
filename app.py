@@ -63,7 +63,7 @@ def processRequest(req):
     lu = result.read()
     data = json.loads(lu)
     print('alolemonde')
-    res = makeWebhookResult(data)
+    res = makeWebhookResult(data,req)
     print("apresWebhook")
     print(res)
     return res
@@ -92,14 +92,24 @@ def makeYqlQuery(req):
 
 
 
-def makeWebhookResult(data):
+def makeWebhookResult(data,req):
+    
+    result = req.get("queryResult")
+    parameters = result.get("parameters")
+    contexttab = result.get("outputContexts")
+    context = contexttab[0].get("parameters")
+    desti = CodePort(context.get("PortsBAI"))
+    
     data = data.get('data')
     if data is None:
         return {}
     ship = data[0].get('ship_name')
     if ship is None:
         return {}
-    speech = "le ferry que vous prendrez est :"+ship
+    dateD = data[0].get('departure').get('datetime')
+    
+    
+    speech = " Le "+ship+"prend la mer pour "+desti+" le "+dateD[8:9]+"/"+dateD[5:6]+" à "+dateD[10:14]+"réserver maintenant !"
     print(speech)
     return {
         "fulfillmentText": speech
