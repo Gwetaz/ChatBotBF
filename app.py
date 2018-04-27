@@ -128,7 +128,7 @@ def makeWebhookResult(data,req):
         "platform": "ACTIONS_ON_GOOGLE",
         "linkOutSuggestion": {
           "destinationName": "Je réserve ",
-          "uri": "brittany-ferries.fr/510?AccountNo=&ferry=ferryonly&journeyType=return&journeyTypeState=&FCONsubmission=true&frmOGroup=9&frmORoute=&frmODay="+dateD[8:10]+"&frmOMonthYear=&frmOMonth="+dateD[5:7]+"&frmOYear="+dateD[0:4]+"&frmOMonthYearRestore=&frmODayRestore=&frmIGroup=5&frmIRoute=&frmIDay=frmIMonthYear=frmIMonth=frmIYear=frmIMonthYearRestore=&frmIDayRestore=&submit=Je+réserve"
+          "uri": "http://www.brittany-ferries.fr/510?AccountNo=&ferry=ferryonly&journeyType=One+Way&journeyTypeState=One+Way&FCONsubmission=true&frmOGroup=9&frmORoute=&frmODay="+dateD[8:10]+"&frmOMonthYear=&frmOMonth="+dateD[5:7]+"&frmOYear="+dateD[0:4]+"&frmOMonthYearRestore=&frmODayRestore=&frmIRoute=&frmIMonth=&frmIYear=&frmIMonthYearRestore=&frmIDayRestore=&submit=Je+r%C3%A9serve "
         }
       }
      ]
