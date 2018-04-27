@@ -64,7 +64,7 @@ def processRequest(req):
     data = json.loads(lu)
     print('alolemonde')
     res = makeWebhookResult(data)
-    print(apresWebhook)
+    print("apresWebhook")
     print(res)
     return res
 
@@ -101,9 +101,9 @@ def makeWebhookResult(data):
         return {}
     speech = "le ferry que vous prendrez est :"+ship
     print(speech)
-    Var = "fulfillmentText :"+speech
-    print(Var) 
-    return Var
+    return {
+        "fulfillmentText": speech
+    }
 
 
 def CodePort(por):
