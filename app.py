@@ -96,27 +96,20 @@ def makeWebhookResult(data):
     data = data.get('data')
     if data is None:
         return {}
-
     ship = data[0].get('ship_name')
     if ship is None:
         return {}
-
-
     speech = "le ferry que vous prendrez est :"+ship
     print(speech)
     Var = "fulfillmentText :"+speech
     print(Var) 
-    return {
-        "fulfillmentText": speech
-    }
+    return Var
 
 
 def CodePort(por):
     choices = {"Le Havre":"FRLEH","Portsmouth":"GBPME","Bilbao":"ESBIO","Plymouth":"GBPLY","Cork":"IEORK","Roscoff":"FRROS","Poole":"GBPOO","Cherbourg":"FRCER","St Malo":"FRSML","Ouistrham":"FROUI","Santander":"ESSDR"}
     result = choices.get(por, '')
     return result
-
-
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
