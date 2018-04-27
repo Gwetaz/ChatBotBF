@@ -112,12 +112,12 @@ def makeWebhookResult(data,req):
     speech = " Le "+ship+" prend la mer pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h réserver maintenant !"
     print(speech)
     return {
-        "fulfillmentText": speech
+        "fulfillmentText": speech,
         "fulfillmentMessages": [
       {
         "platform": "ACTIONS_ON_GOOGLE",
         "simpleResponses": {
-          "simpleResponses": [
+           "simpleResponses": [
             {
               "textToSpeech": speech
             }
