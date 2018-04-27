@@ -87,15 +87,9 @@ def makeYqlQuery(req):
     date = parameters.get("date")
     dateMod = urlencode({ 'q' : date})[2:35]
     print(dateMod)
-  
-    
 
     return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
 
-def CodePort(por):
-    choices = {"Le Havre":"FRLEH","Portsmouth":"GBPME","Bilbao":"ESBIO","Plymouth":"GBPLY","Cork":"IEORK","Roscoff":"FRROS","Poole":"GBPOO","Cherbourg":"FRCER","St Malo":"FRSML","Ouistrham":"FROUI","Santander":"ESSDR"}
-    result = choices.get(por, '')
-    return result
 
 
 def makeWebhookResult(data):
@@ -109,9 +103,19 @@ def makeWebhookResult(data):
 
 
     speech = "le ferry que vous prendrez est :"+ship
+    print(speech)
+    Var = "fulfillmentText :"+speech
+    print Var 
     return {
         "fulfillmentText": speech
     }
+
+
+def CodePort(por):
+    choices = {"Le Havre":"FRLEH","Portsmouth":"GBPME","Bilbao":"ESBIO","Plymouth":"GBPLY","Cork":"IEORK","Roscoff":"FRROS","Poole":"GBPOO","Cherbourg":"FRCER","St Malo":"FRSML","Ouistrham":"FROUI","Santander":"ESSDR"}
+    result = choices.get(por, '')
+    return result
+
 
 
 if __name__ == '__main__':
