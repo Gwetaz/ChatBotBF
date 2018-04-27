@@ -130,7 +130,7 @@ def makeWebhookResult(data,req):
           "destinationName": "Je réserve ",
           "uri": "brittany-ferries.fr/510?AccountNo=&ferry=ferryonly&journeyType=return&journeyTypeState=&FCONsubmission=true&frmOGroup=9&frmORoute=&frmODay=&frmOMonthYear=&frmOMonth=&frmOYear=frmOMonthYearRestore=&frmODayRestore=&frmIGroup=5&frmIRoute=&frmIDay=frmIMonthYear=frmIMonth=frmIYear=frmIMonthYearRestore=&frmIDayRestore=&submit=Je+réserve"
         }
-      },
+      }
     }
 
 
