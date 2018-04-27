@@ -109,7 +109,7 @@ def makeWebhookResult(data,req):
     dateD = data[0].get('departure').get('datetime')
     
     
-    speech = " Le "+ship+" prend la mer pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"réserver maintenant !"
+    speech = " Le "+ship+" prend la mer pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h réserver maintenant !"
     print(speech)
     return {
         "fulfillmentText": speech
