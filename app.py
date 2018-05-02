@@ -77,13 +77,13 @@ def processRequest(req):
 def makeYqlQuery(req):
     result = req.get("queryResult")
     parameters = result.get("parameters")
-    depart = CodePort(parameters.get("dpart"))
-    print(depart)
     contexttab = result.get("outputContexts")
     context = contexttab[0].get("parameters")
     print(context)
-    desti = CodePort(context.get("PortsBAI"))
+    desti = CodePort(context.get("PortPlym"))
     print(desti)
+    depart = CodePort(context.get("PortsEnFrance")
+    print(depart)
     date = parameters.get("date")
     dateMod = urlencode({ 'q' : date})[2:35]
     print(dateMod)
