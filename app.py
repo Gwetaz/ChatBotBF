@@ -97,8 +97,8 @@ def makeWebhookResult(data,req):
     result = req.get("queryResult")
     parameters = result.get("parameters")
     contexttab = result.get("outputContexts")
-    context = contexttab[0].get("parameters")
-    desti = context.get("PortsBAI")
+    context = contexttab[1].get("parameters")
+    desti = context.get("PortPlym")
     
     data = data.get('data')
     if data is None:
@@ -111,6 +111,7 @@ def makeWebhookResult(data,req):
     
     speech = " Le "+ship+" prend la mer pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h réserver maintenant !"
     print(speech)
+    
     return {
         "fulfillmentText": speech,
         "fulfillmentMessages": [
