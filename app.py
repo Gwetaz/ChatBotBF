@@ -175,13 +175,13 @@ def makeWebhookResult2(data,req):
     result = req.get("queryResult")
     parameters = result.get("parameters")
     contexttab = result.get("outputContexts")
-    context = contexttab[0].get("parameters")
+    context = contexttab[1].get("parameters")
     desti = context.get("PortPorts")
     
     data = data.get('data')
     if data is None:
         return {}
-    ship = data[1].get('ship_name')
+    ship = data[0].get('ship_name')
     if ship is None:
         return {}
     dateD = data[0].get('departure').get('datetime')
