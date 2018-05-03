@@ -79,7 +79,7 @@ def processRequest(req):
          result = urlopen(URL)
          lu = result.read()
          data = json.loads(lu)
-         print('alolemonde')
+         print('alolemonde2')
          res = makeWebhookResult2(data,req)
          print("apresWebhook")
          print(res)
