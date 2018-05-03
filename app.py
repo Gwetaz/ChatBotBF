@@ -250,7 +250,7 @@ def makeWebhookResult2(data,req):
 
 
 
-def makeWebhookResult2(data,req):
+def makeWebhookResult3(data,req):
     
     result = req.get("queryResult")
     parameters = result.get("parameters")
