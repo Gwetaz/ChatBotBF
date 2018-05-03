@@ -68,7 +68,7 @@ def processRequest(req):
     print(res)
     return res
 
-else if   req.get("queryResult").get("action") == "TraverserPortsmouth":
+elif   req.get("queryResult").get("action") == "TraverserPortsmouth":
     
     print("avant makeYql")
     yql_query = makeYqlQuery2(req)
