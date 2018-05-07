@@ -340,7 +340,7 @@ def makeWebhookResult4(data,req):
     dateD = data[i].get('departure').get('datetime')
   
     while (ship != bato ): 
-        i++
+        i = i+1
         ship = data[i].get('ship_name')
         dateD = data[i].get('departure').get('datetime')
         speech = " Le "+ship+" prend la mer à "+depart+" pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h "
