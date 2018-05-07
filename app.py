@@ -177,10 +177,13 @@ def makeYqlQuery4(req):
     result = req.get("queryResult")
     param = result.get("parameters")
     desti = CodePort(param.get("PortEtranger"))
+    print(desti)
     depart = CodePort(param.get("PortsEnFrance"))
+    print(depart)
     ship = param.get("Ferry")
-    date = parameters.get("date")
+    date = param.get("date")
     dateMod = urlencode({ 'q' : date})[2:35]
+    print(dateMod)
 
     return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
 
