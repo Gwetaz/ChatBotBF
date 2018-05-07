@@ -328,6 +328,8 @@ def makeWebhookResult4(data,req):
     param = result.get("parameters")
     desti = param.get("PortEtranger")
     depart = param.get("PortsEnFrance")
+    date = param.get("date")
+    print(date[7:9])
     i = 0 
     data = data.get('data')
     if data is None:
@@ -336,36 +338,68 @@ def makeWebhookResult4(data,req):
     print(bato)      
     ship = data[i].get('ship_name')
     dateD = data[i].get('departure').get('datetime')
-    
-    
-    if (ship != bato ): 
-        speech = "A cette date("+dateD[8:10]+"/"+dateD[5:7]+"+ c'est "+ship"+qui prend la mer à "+depart+" pour "+desti+" 
-    else :
+  
+    while (ship != bato ): 
+        i++
+        ship = data[i].get('ship_name')
+        dateD = data[i].get('departure').get('datetime')
         speech = " Le "+ship+" prend la mer à "+depart+" pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h "
-    print(speech)
-    
-    return {
-        "fulfillmentText": speech,
-        "fulfillmentMessages": [
-      {
-        "platform": "ACTIONS_ON_GOOGLE",
-        "simpleResponses": {
-           "simpleResponses": [
-            {
-              "textToSpeech": speech
+        print(speech)
+        if ( dateD[8:10] != date[7:9] ):
+            ship = data[0].get('ship_name')
+            dateD = data[0].get('departure').get('datetime')
+            speech = "A cette date("+dateD[8:10]+"/"+dateD[5:7]+") c'est "+ship"+qui prend la mer à "+depart+" pour "+desti+"à "+dateD[11:16]+"h" 
+            print(speech)   
+            return {
+                "fulfillmentText": speech,
+                "fulfillmentMessages": [
+              {
+                "platform": "ACTIONS_ON_GOOGLE",
+                "simpleResponses": {
+                   "simpleResponses": [
+                    {
+                      "textToSpeech": speech
+                    }
+                  ]
+                }
+              },
+              {
+                "platform": "ACTIONS_ON_GOOGLE",
+                "linkOutSuggestion": {
+                  "destinationName": "Je réserve ",
+                  "uri": "https://www.brittany-ferries.fr/510?AccountNo=&ferry=ferryonly&journeyType=One+Way&journeyTypeState=One+Way&FCONsubmission=true&frmOGroup=9&frmORoute=&frmODay="+dateD[8:10]+"&frmOMonthYear=&frmOMonth="+dateD[5:7]+"&frmOYear="+dateD[0:4]+"&frmOMonthYearRestore=&frmODayRestore=&frmIRoute=&frmIMonth=&frmIYear=&frmIMonthYearRestore=&frmIDayRestore=&submit=Je+r%C3%A9serve "
+                }
+              }
+             ]
             }
-          ]
-        }
-      },
-      {
-        "platform": "ACTIONS_ON_GOOGLE",
-        "linkOutSuggestion": {
-          "destinationName": "Je réserve ",
-          "uri": "https://www.brittany-ferries.fr/510?AccountNo=&ferry=ferryonly&journeyType=One+Way&journeyTypeState=One+Way&FCONsubmission=true&frmOGroup=9&frmORoute=&frmODay="+dateD[8:10]+"&frmOMonthYear=&frmOMonth="+dateD[5:7]+"&frmOYear="+dateD[0:4]+"&frmOMonthYearRestore=&frmODayRestore=&frmIRoute=&frmIMonth=&frmIYear=&frmIMonthYearRestore=&frmIDayRestore=&submit=Je+r%C3%A9serve "
-        }
-      }
-     ]
-    }
+        else :
+             return {
+                "fulfillmentText": speech,
+                "fulfillmentMessages": [
+              {
+                "platform": "ACTIONS_ON_GOOGLE",
+                "simpleResponses": {
+                   "simpleResponses": [
+                    {
+                      "textToSpeech": speech
+                    }
+                  ]
+                }
+              },
+              {
+                "platform": "ACTIONS_ON_GOOGLE",
+                "linkOutSuggestion": {
+                  "destinationName": "Je réserve ",
+                  "uri": "https://www.brittany-ferries.fr/510?AccountNo=&ferry=ferryonly&journeyType=One+Way&journeyTypeState=One+Way&FCONsubmission=true&frmOGroup=9&frmORoute=&frmODay="+dateD[8:10]+"&frmOMonthYear=&frmOMonth="+dateD[5:7]+"&frmOYear="+dateD[0:4]+"&frmOMonthYearRestore=&frmODayRestore=&frmIRoute=&frmIMonth=&frmIYear=&frmIMonthYearRestore=&frmIDayRestore=&submit=Je+r%C3%A9serve "
+                }
+              }
+             ]
+            }
+            
+            
+    
+    
+
 
 
 
