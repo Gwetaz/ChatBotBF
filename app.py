@@ -102,8 +102,18 @@ def processRequest(req):
          print("apresWebhook")
          print(res)
          return res
-
-
+    
+    elif req.get("queryResult").get("action") == "HorairePrecise":
+         yql_query = makeYqlQuery4(req)
+         yql_url = baseurl +"crossings?"+yql_query
+         headers = {}
+         headers['Authorization'] = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTaG9ydEJyZWFrcyIsInJvbGVzIjoiUk9MRV9DVVNUT01FUiIsImlzcyI6IkJyaXRhbnkgRmVycmllcyIsImlhdCI6MTUyMjc0MjEwNCwianRpIjoiMjcxYzA2ZGMtOGQ4YS00YTZmLWE1ZDYtMDRiZThlNzEyMmU4In0.RD4zhr5Ve2Vkay-_6_ZRzKxgbjnG6B1YKZS3bazS9vs"
+         URL = Request(yql_url,headers = headers)
+         result = urlopen(URL)
+         lu = result.read()
+         data = json.loads(lu)
+         res = makeWebhookResult4(data,req)
+         return res
 
     else:
            return {}
@@ -155,6 +165,18 @@ def makeYqlQuery3(req):
     date = parameters.get("date")
     dateMod = urlencode({ 'q' : date})[2:35]
     print(dateMod)
+
+    return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
+
+
+def makeYqlQuery4(req):
+    result = req.get("queryResult")
+    param = result.get("parameters")
+    desti = CodePort(param.get("PortEtranger"))
+    depart = CodePort(param.get("PortsEnFrance"))
+    ship = param.get("Ferry")
+    date = parameters.get("date")
+    dateMod = urlencode({ 'q' : date})[2:35]
 
     return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
 
@@ -268,6 +290,48 @@ def makeWebhookResult3(data,req):
     
     
     speech = " Le "+ship+" prend la mer pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h , réservez maintenant !"
+    print(speech)
+    
+    return {
+        "fulfillmentText": speech,
+        "fulfillmentMessages": [
+      {
+        "platform": "ACTIONS_ON_GOOGLE",
+        "simpleResponses": {
+           "simpleResponses": [
+            {
+              "textToSpeech": speech
+            }
+          ]
+        }
+      },
+      {
+        "platform": "ACTIONS_ON_GOOGLE",
+        "linkOutSuggestion": {
+          "destinationName": "Je réserve ",
+          "uri": "https://www.brittany-ferries.fr/510?AccountNo=&ferry=ferryonly&journeyType=One+Way&journeyTypeState=One+Way&FCONsubmission=true&frmOGroup=9&frmORoute=&frmODay="+dateD[8:10]+"&frmOMonthYear=&frmOMonth="+dateD[5:7]+"&frmOYear="+dateD[0:4]+"&frmOMonthYearRestore=&frmODayRestore=&frmIRoute=&frmIMonth=&frmIYear=&frmIMonthYearRestore=&frmIDayRestore=&submit=Je+r%C3%A9serve "
+        }
+      }
+     ]
+    }
+
+def makeWebhookResult4(data,req):
+    
+    result = req.get("queryResult")
+    param = result.get("parameters")
+    desti = CodePort(param.get("PortEtranger"))
+    depart = CodePort(param.get("PortsEnFrance"))
+    
+    data = data.get('data')
+    if data is None:
+        return {}
+    ship = data[0].get('ship_name')
+    if ship is None:
+        return {}
+    dateD = data[0].get('departure').get('datetime')
+    
+    
+    speech = " Le "+ship+" prend la mer à "+depart+" pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h "
     print(speech)
     
     return {
