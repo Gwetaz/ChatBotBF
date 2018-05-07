@@ -348,7 +348,7 @@ def makeWebhookResult4(data,req):
         if ( dateD[8:10] != date[7:9] ):
             ship = data[0].get('ship_name')
             dateD = data[0].get('departure').get('datetime')
-            speech = "A cette date("+dateD[8:10]+"/"+dateD[5:7]+") c'est "+ship"+qui prend la mer à "+depart+" pour "+desti+"à "+dateD[11:16]+"h" 
+            speech = "A cette date("+dateD[8:10]+"/"+dateD[5:7]+") c'est "+ship+"qui prend la mer à "+depart+" pour "+desti+"à "+dateD[11:16]+"h" 
             print(speech)   
             return {
                 "fulfillmentText": speech,
