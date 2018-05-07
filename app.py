@@ -333,11 +333,7 @@ def makeWebhookResult4(data,req):
     if data is None:
         return {}
     bato = param.get("Ferry").upper()
-    print(bato)
-    ship = data[i].get('ship_name')
-    while(bato != ship )
-       i++
-        
+    print(bato)      
     ship = data[i].get('ship_name')
     dateD = data[i].get('departure').get('datetime')
     
