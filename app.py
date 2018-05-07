@@ -173,6 +173,7 @@ def makeYqlQuery3(req):
 
 
 def makeYqlQuery4(req):
+    print("test")
     result = req.get("queryResult")
     param = result.get("parameters")
     desti = CodePort(param.get("PortEtranger"))
