@@ -326,16 +326,20 @@ def makeWebhookResult4(data,req):
     
     result = req.get("queryResult")
     param = result.get("parameters")
-    desti = CodePort(param.get("PortEtranger"))
-    depart = CodePort(param.get("PortsEnFrance"))
-    
+    desti = param.get("PortEtranger")
+    depart = param.get("PortsEnFrance")
+    i = 0 
     data = data.get('data')
     if data is None:
         return {}
-    ship = data[0].get('ship_name')
-    if ship is None:
-        return {}
-    dateD = data[0].get('departure').get('datetime')
+    bato = param.get("Ferry").upper()
+    print(bato)
+    ship = data[i].get('ship_name')
+    while(bato != ship )
+       i++
+        
+    ship = data[i].get('ship_name')
+    dateD = data[i].get('departure').get('datetime')
     
     
     speech = " Le "+ship+" prend la mer à "+depart+" pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h "
