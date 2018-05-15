@@ -117,6 +117,8 @@ def processRequest(req):
          data = json.loads(lu)
          res = makeWebhookResult4(data,req)
          return res
+    
+     elif req.get("queryResult").get("action") == "Quartier":
 
     else:
            return {}
