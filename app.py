@@ -22,6 +22,7 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 baseurl = "https://brittany-ferries-holidays-api-ferries-apis.ngpb.io/v1/"
+baseurl2 = "https://brittany-ferries-holidays-api-hotels-proxy.ngpb.io/v1/"
 
 
 @app.route('/webhook', methods=['POST'])
@@ -119,6 +120,18 @@ def processRequest(req):
          return res
     
      elif req.get("queryResult").get("action") == "Quartier":
+          yql_query = makeQuartierQuery(req)
+          print(yql_query)
+          yql_url = baseurl2 +"hotels?"+yql_query
+          print(yql_url)
+          URL = Request(yql_url)
+          print(URL)
+          result = urlopen(URL)
+          print(result)
+          lu = result.read()
+          data = json.loads(lu)
+          res = makeWebhookQuartier(data)
+          return res
 
     else:
            return {}
@@ -188,6 +201,17 @@ def makeYqlQuery4(req):
     print(dateMod)
 
     return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
+
+
+def makeYqlQuartier(req):
+    print("test")
+    result = req.get("queryResult")
+    param = result.get("parameters")
+    desti = param.get("QuartierLondres")
+    print(desti)
+
+
+    return "neighborhood_slug="+desti
 
 
 
@@ -397,6 +421,23 @@ def makeWebhookResult4(data,req):
               }
              ]
             }
+            
+def makeWebhookQuartier(data):
+    
+    
+    data = data.get('data')
+    if data is None:
+        return {}
+    nom = data[0].get('name')
+ 
+    
+    
+    speech = " l'hotel 1 est : "+nom
+    print(speech)
+    
+    return {
+        "fulfillmentText": speech
+    }
             
             
     
