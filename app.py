@@ -203,7 +203,7 @@ def makeYqlQuery4(req):
     return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
 
 
-def makeYqlQuartier(req):
+def makeQuartierQuery(req):
     print("test")
     result = req.get("queryResult")
     param = result.get("parameters")
