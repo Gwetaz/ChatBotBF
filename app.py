@@ -67,7 +67,7 @@ def processRequest(req):
         print("apresWebhook")
         print(res)
         return res
-
+    
     elif req.get("queryResult").get("action") == "TraverserPortsmouth":
          print("avant makeYql")
          yql_query = makeYqlQuery2(req)
@@ -119,19 +119,19 @@ def processRequest(req):
          res = makeWebhookResult4(data,req)
          return res
     
-     elif req.get("queryResult").get("action") == "Quartier":
-          yql_query = makeQuartierQuery(req)
-          print(yql_query)
-          yql_url = baseurl2 +"hotels?"+yql_query
-          print(yql_url)
-          URL = Request(yql_url)
-          print(URL)
-          result = urlopen(URL)
-          print(result)
-          lu = result.read()
-          data = json.loads(lu)
-          res = makeWebhookQuartier(data)
-          return res
+    elif req.get("queryResult").get("action") == "Quartier":
+         yql_query = makeQuartierQuery(req)
+         print(yql_query)
+         yql_url = baseurl2 +"hotels?"+yql_query
+         print(yql_url)
+         URL = Request(yql_url)
+         print(URL)
+         result = urlopen(URL)
+         print(result)
+         lu = result.read()
+         data = json.loads(lu)
+         res = makeWebhookQuartier(data)
+         return res
 
     else:
            return {}
