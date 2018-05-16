@@ -432,11 +432,24 @@ def makeWebhookQuartier(data):
  
     
     
-    speech = " l'hotel 1 est : "+nom
+    speech = " les hotels de ce quartier sont : "+nom
     print(speech)
     
     return {
-        "fulfillmentText": speech
+        "fulfillmentText": speech,
+        "fulfillmentMessages": [
+              {
+               "platform": "ACTIONS_ON_GOOGLE",
+               "carouselSelect": {
+                    "items": [       
+            {
+                 "info": {
+                "key": nom
+              },
+              "title": nom,
+              "description": "Contient plusieurs ports",
+            
+            }
     }
             
             
