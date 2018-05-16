@@ -437,20 +437,28 @@ def makeWebhookQuartier(data):
     
     return {
         "fulfillmentText": speech,
-        "fulfillmentMessages": [
-              {
-               "platform": "ACTIONS_ON_GOOGLE",
-               "carouselSelect": {
-                    "items": [       
+        "fulfillmentMessages": 
+		[
             {
-                 "info": {
-                "key": nom
-              },
-              "title": nom,
-              "description": "Contient plusieurs ports",
+               "platform": "ACTIONS_ON_GOOGLE",
+               "carouselSelect": 
+			   {
+                    "items": 
+					[       
+						{
+							"info": 
+							{
+							"key": nom
+							},
+						  "title": nom,
+						  "description": "Contient plusieurs ports"
             
-            }
-    }
+						}
+					]	
+				}
+			}
+		]
+	}
             
             
     
