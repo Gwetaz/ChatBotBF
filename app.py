@@ -454,7 +454,7 @@ def makeWebhookQuartier(data):
 		     "platform": "ACTIONS_ON_GOOGLE",
 		     "carouselSelect": 
 		      {
-			 "items": [ tab ]
+			 "items": items
 		      }   
 		}
 	 ]
