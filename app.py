@@ -450,14 +450,16 @@ def makeWebhookQuartier(data):
     {
         "fulfillmentText": speech,
         "fulfillmentMessages": 
-		[
-          	{
-               "platform": "ACTIONS_ON_GOOGLE",
-               "carouselSelect": {
-		       "items": items}   
-		
+	[
+		{
+		     "platform": "ACTIONS_ON_GOOGLE",
+		     "carouselSelect": 
+	              {
+		   	 "items": items
+		      }   
+
 		}
-		]
+	]
     }
             
             
