@@ -431,7 +431,7 @@ def makeWebhookQuartier(data):
     i = 0
     items = []
     print("avant while")
-    while ( i != 4 ):
+    while ( i != 1 ):
 	    tab ={}
 	    tab["info"] = {}
 	    tab.get("info")["key"] = data[i].get('name')
@@ -455,7 +455,7 @@ def makeWebhookQuartier(data):
 		     "platform": "ACTIONS_ON_GOOGLE",
 		     "carouselSelect": 
 	              {
-		   	 "items": items
+		   	 "items": [ tab ]
 		      }   
 
 		}
