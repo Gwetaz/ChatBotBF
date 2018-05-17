@@ -430,36 +430,35 @@ def makeWebhookQuartier(data):
         return {}
     nom = data[0].get('name')
     i = 0
-    tab ={}
-    #while (data[i].get('name') != 0 ):
-    tab["info"] = {}
-    tab.get("info")["key"] = data[i].get('name')
-    tab["title"]= data[i].get('name')
-    tab["description"] = "test" 
-    i += 1	 
+    items = []
+    while (data[i].get('name') != 0 ):
+	    tab ={}
+	    tab["info"] = {}
+	    tab.get("info")["key"] = data[i].get('name')
+	    tab["title"]= data[i].get('name')
+	    tab["description"] = "test" 
+	    items.append(tab)
+	    i += 1	 
 		
 
     speech = " les hotels de ce quartier sont : "+nom
     print(speech)
     
-    return {
+    return 
+    {
         "fulfillmentText": speech,
         "fulfillmentMessages": 
 		[
-            {
+          	{
                "platform": "ACTIONS_ON_GOOGLE",
                "carouselSelect": 
-			   {
-                    "items": 
-					[ 
-						tab,
-						tab
-					]		
+			  	{
+                   			 items	
 				   
 				}
-			}
+		}
 		]
-	}
+    }
             
             
     
