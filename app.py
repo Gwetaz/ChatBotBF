@@ -431,6 +431,7 @@ def makeWebhookQuartier(data):
     nom = data[0].get('name')
     i = 0
     items = []
+    print("avant while")
     while (data[i].get('name') != 0 ):
 	    tab ={}
 	    tab["info"] = {}
@@ -438,7 +439,9 @@ def makeWebhookQuartier(data):
 	    tab["title"]= data[i].get('name')
 	    tab["description"] = "test" 
 	    items.append(tab)
-	    i += 1	 
+	    i += 1
+		
+    print(items)
 		
 
     speech = " les hotels de ce quartier sont : "+nom
