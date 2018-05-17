@@ -428,7 +428,6 @@ def makeWebhookQuartier(data):
     data = data.get('data')
     if data is None:
         return {}
-    nom = data[0].get('name')
     i = 0
     items = []
     print("avant while")
@@ -444,7 +443,7 @@ def makeWebhookQuartier(data):
     print(items)
 		
 
-    speech = " les hotels de ce quartier sont : "+nom
+    speech = " les hotels de ce quartier sont : "
     print(speech)
     
     return 
@@ -454,11 +453,9 @@ def makeWebhookQuartier(data):
 		[
           	{
                "platform": "ACTIONS_ON_GOOGLE",
-               "carouselSelect": 
-			  	{
-                   			 items	
-				   
-				}
+               "carouselSelect": {
+		       "items" : items}   
+		
 		}
 		]
     }
