@@ -446,7 +446,7 @@ def makeWebhookQuartier(data):
 			   {
                     "items": 
 					[       
-						while( data[i].get('name') != 0 ):
+						while (data[i].get('name') != 0 ):
 							+
 							{
 								"info": 
