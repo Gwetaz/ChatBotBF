@@ -440,8 +440,8 @@ def makeWebhookQuartier(data):
 	    items.append(tab)
 	    i += 1
 		
-    print(items)
-		
+   # print(items)
+    print(tab)	
 
     speech = " les hotels de ce quartier sont : "
     print(speech)
