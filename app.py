@@ -429,6 +429,7 @@ def makeWebhookQuartier(data):
     if data is None:
         return {}
     nom = data[0].get('name')
+    i = 0
  
     
     
@@ -445,16 +446,22 @@ def makeWebhookQuartier(data):
 			   {
                     "items": 
 					[       
-						{
-							"info": 
+						while( data[i].get('name') != 0 ):
+							+
 							{
-							"key": nom
+								"info": 
+								{
+								"key": data[i].get('name')
+								},
+							  "title":  data[i].get('name')
+							  "description": "Contient plusieurs ports"
+
 							},
-						  "title": nom,
-						  "description": "Contient plusieurs ports"
-            
-						}
-					]	
+							i += 1
+							+
+						
+					]		
+				   
 				}
 			}
 		]
