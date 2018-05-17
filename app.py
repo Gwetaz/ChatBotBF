@@ -446,8 +446,7 @@ def makeWebhookQuartier(data):
     speech = " les hotels de ce quartier sont : "
     print(speech)
     
-    return 
-    {
+    return {
 	"fulfillmentText": speech,
 	"fulfillmentMessages": 
 	 [
