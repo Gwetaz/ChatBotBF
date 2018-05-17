@@ -430,9 +430,15 @@ def makeWebhookQuartier(data):
         return {}
     nom = data[0].get('name')
     i = 0
- 
-    
-    
+    tab ={}
+    #while (data[i].get('name') != 0 ):
+	tab["info"] = {}
+	tab.get("info")["key"] = data[i].get('name')
+	tab["title"]= data[i].get('name')
+	tab["description"] = "test" 
+	i += 1	 
+		
+
     speech = " les hotels de ce quartier sont : "+nom
     print(speech)
     
@@ -445,21 +451,8 @@ def makeWebhookQuartier(data):
                "carouselSelect": 
 			   {
                     "items": 
-					[       
-						while (data[i].get('name') != 0 ):
-							+
-							{
-								"info": 
-								{
-								"key": data[i].get('name')
-								},
-							  "title":  data[i].get('name')
-							  "description": "Contient plusieurs ports"
-
-							},
-							i += 1
-							+
-						
+					[ 
+						tab
 					]		
 				   
 				}
