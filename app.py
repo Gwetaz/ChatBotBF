@@ -21,13 +21,15 @@ from flask import make_response
 
 # Flask app should start in global layout
 app = Flask(__name__)
+
+#On prépare les connexions aux différentes API :
 baseurl = "https://brittany-ferries-holidays-api-ferries-apis.ngpb.io/v1/"
-baseurl2 = "https://brittany-ferries-holidays-api-hotels-proxy.ngpb.io/v1/"
+baseurl2 = "https://brittany-ferries-holidays-api-hotels-proxy.ngpb.io/v1/" 
 
-
+#Définition du webhook :
 @app.route('/webhook', methods=['POST'])
 def webhook():
-    req = request.get_json(silent=True, force=True)
+    req = request.get_json(silent=True, force=True) #Récupération du JSON envoyé par Dialogflow
     print (sys.version)
     print("Request:")
     print("test Avant dumps")
@@ -36,7 +38,7 @@ def webhook():
     print("test Avant processReq")
     print(req)
 
-    res = processRequest(req)
+    res = processRequest(req) #On traite la requête 
     
     print("test Apres processReq")
     print(res)
@@ -50,20 +52,21 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("queryResult").get("action") == "TraverserVV":
+    if req.get("queryResult").get("action") == "TraverserVV": # Traitement en fonction de l'action de l'intent dans DialofFlow
         print("avant makeYql")
-        yql_query = makeYqlQuery(req)
+        yql_query = makeYqlQuery(req) #Préparation de l'URL pour se connecter à une API 
         yql_url = baseurl +"crossings?"+yql_query
         print(yql_url)
         headers = {}
+	#On ajoute au headers HTTP le bearer pour pouvoir utiliser l'API ( Clé d'accès)
         headers['Authorization'] = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTaG9ydEJyZWFrcyIsInJvbGVzIjoiUk9MRV9DVVNUT01FUiIsImlzcyI6IkJyaXRhbnkgRmVycmllcyIsImlhdCI6MTUyMjc0MjEwNCwianRpIjoiMjcxYzA2ZGMtOGQ4YS00YTZmLWE1ZDYtMDRiZThlNzEyMmU4In0.RD4zhr5Ve2Vkay-_6_ZRzKxgbjnG6B1YKZS3bazS9vs"
-        URL = Request(yql_url,headers = headers)
+        URL = Request(yql_url,headers = headers) # On crée la requête http à envoyer
         print(URL)
-        result = urlopen(URL)
+        result = urlopen(URL) #On envoit la requête à l'API et récupère le résultat dans une variable
         lu = result.read()
-        data = json.loads(lu)
+        data = json.loads(lu) #On convertit en JSON le résultat
         print('alolemonde')
-        res = makeWebhookResult(data,req)
+        res = makeWebhookResult(data,req) #On prépare le message qui va être envoyé à l'utilisateur
         print("apresWebhook")
         print(res)
         return res
@@ -138,8 +141,8 @@ def processRequest(req):
 
 
 def makeYqlQuery(req):
-    result = req.get("queryResult")
-    parameters = result.get("parameters")
+    result = req.get("queryResult") #On récupère les données issus de DialogFlow
+    parameters = result.get("parameters") #On stock ces données dans différentes variables
     contexttab = result.get("outputContexts")
     context = contexttab[1].get("parameters")
     print(context)
@@ -150,7 +153,7 @@ def makeYqlQuery(req):
     date = parameters.get("date")
     dateMod = urlencode({ 'q' : date})[2:35]
     print(dateMod)
-
+    #On peut créer le contenu de l'URL et le retourner
     return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
 
 def makeYqlQuery2(req):
@@ -217,7 +220,7 @@ def makeQuartierQuery(req):
 
 def makeWebhookResult(data,req):
     
-    result = req.get("queryResult")
+    result = req.get("queryResult") #On récupère les différentes informations dans le message précédent(req) ou dans le résultat de l'API (data) 
     parameters = result.get("parameters")
     contexttab = result.get("outputContexts")
     context = contexttab[1].get("parameters")
@@ -231,10 +234,11 @@ def makeWebhookResult(data,req):
         return {}
     dateD = data[0].get('departure').get('datetime')
     
-    
+    #On prépare le " Default Message qui sera envoyé à l'utilisateur"
     speech = " Le "+ship+" prend la mer pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h , réservez maintenant !"
     print(speech)
     
+    #Envois du message au format accepté par DialogFlow
     return {
         "fulfillmentText": speech,
         "fulfillmentMessages": [
@@ -248,7 +252,7 @@ def makeWebhookResult(data,req):
           ]
         }
       },
-      {
+      {#Possibilité d'utiliser les différents outils d'intégrations : (Ici Google Assistant et ces différents 'Rich Messages' 
         "platform": "ACTIONS_ON_GOOGLE",
         "linkOutSuggestion": {
           "destinationName": "Je réserve ",
