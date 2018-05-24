@@ -136,6 +136,20 @@ def processRequest(req):
          res = makeWebhookQuartier(data)
          return res
 
+    elif req.get("queryResult").get("action") == "Hotels":
+         yql_query = makeHotelQuery(req)
+         print(yql_query)
+         yql_url = baseurl2 +"hotels?"+yql_query
+         print(yql_url)
+         URL = Request(yql_url)
+         print(URL)
+         result = urlopen(URL)
+         print(result)
+         lu = result.read()
+         data = json.loads(lu)
+         res = makeWebhookHotel(data)
+         return res
+
     else:
            return {}
 
@@ -215,6 +229,16 @@ def makeQuartierQuery(req):
 
 
     return "neighborhood_slug="+desti
+
+def makeHotelQuery(req):
+    print("test")
+    result = req.get("queryResult")
+    param = result.get("parameters")
+    nom = param.get("Hotels")
+    print(desti)
+
+
+    return "name="+nom
 
 
 
@@ -466,7 +490,36 @@ def makeWebhookQuartier(data):
 	 ]
     }
             
-            
+ def makeWebhookHotel(data):
+    
+    
+    data = data.get('data')
+    if data is None:
+        return {}
+    print("avant while")
+    
+    return {
+	
+	"fulfillmentMessages": 
+	 [
+		{
+		     "platform": "ACTIONS_ON_GOOGLE",
+		     "basicCard": 
+		      {
+			 "title": data.get('name')
+			 "formattedText": data.get('description')
+			 "buttons":[
+				    {
+				      "title": "+ D'infos",
+				      "openUriAction": {
+					"uri": "http://stage.ngpb.io/hotel/00_32784"
+				      }
+				    }
+				   ]
+		      }   
+		}
+	 ]
+    }           
     
     
 
