@@ -235,7 +235,7 @@ def makeHotelQuery(req):
     result = req.get("queryResult")
     param = result.get("parameters")
     nom = param.get("Hotels")
-    print(desti)
+    print(nom)
 
 
     return "name="+nom
