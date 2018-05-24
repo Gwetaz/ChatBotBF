@@ -234,7 +234,7 @@ def makeHotelQuery(req):
     print("test")
     result = req.get("queryResult")
     param = result.get("parameters")
-    nom = urlencode({ 'q' : param.get("Hotels")})
+    nom = urlencode({param.get("Hotels")})
     print(nom)
 
 
