@@ -234,7 +234,7 @@ def makeHotelQuery(req):
     print("test")
     result = req.get("queryResult")
     param = result.get("parameters")
-    nom = param.get("Hotels")
+    nom = urlencode({ 'q' : param.get("Hotels")})
     print(nom)
 
 
@@ -496,7 +496,7 @@ def makeWebhookHotel(data):
     data = data.get('data')
     if data is None:
         return {}
-    print("avant while")
+    
     
     return {
 	
@@ -506,8 +506,8 @@ def makeWebhookHotel(data):
 		     "platform": "ACTIONS_ON_GOOGLE",
 		     "basicCard": 
 		      {
-			 "title": data.get('name'),
-			 "formattedText": data.get('description'),
+			 "title": data[0].get('name'),
+			 "formattedText": data[0].get('description'),
 			 "buttons":[
 				    {
 				      "title": "+ D'infos",
