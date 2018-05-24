@@ -490,7 +490,7 @@ def makeWebhookQuartier(data):
 	 ]
     }
             
- def makeWebhookHotel(data):
+def makeWebhookHotel(data):
     
     
     data = data.get('data')
