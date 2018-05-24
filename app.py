@@ -506,7 +506,7 @@ def makeWebhookHotel(data):
 		     "platform": "ACTIONS_ON_GOOGLE",
 		     "basicCard": 
 		      {
-			 "title": data.get('name')
+			 "title": data.get('name'),
 			 "formattedText": data.get('description')
 			 "buttons":[
 				    {
