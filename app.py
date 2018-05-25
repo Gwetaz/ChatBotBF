@@ -507,7 +507,7 @@ def makeWebhookHotel(data):
 		     "basicCard": 
 		      {
 			 "title": data[0].get('name'),
-			 "formattedText": "Premier prix : "+data[0].get('starting_price').get("amount")."€",
+			 "formattedText": "Premier prix : "+data[0].get('starting_price').get("amount")+"€",
 			 "image": {
 			   "imageUri": data[0].get('images')[0].get('uri'),
 		           "accessibilityText": data[0].get('name')
