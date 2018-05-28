@@ -511,7 +511,7 @@ def makeWebhookHotel(data):
 		     "basicCard": 
 		      {
 			 "title": name,
-			 "formattedText": "Premier prix : "+prix+"€",
+			 "formattedText": "Premier prix : "#+prix+"€",
 			 "image": {
 			 #  "imageUri": ImageUri,
 		         #  "accessibilityText": name
