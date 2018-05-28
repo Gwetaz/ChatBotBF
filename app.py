@@ -513,8 +513,8 @@ def makeWebhookHotel(data):
 			 "title": name,
 			 "formattedText": "Premier prix : ",#+prix+"€",
 			 "image": {
-			 #  "imageUri": ImageUri,
-		         #  "accessibilityText": name
+			   "imageUri": ImageUri,
+		           "accessibilityText": name
           		},
 			 "buttons":[
 				    {
