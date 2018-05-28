@@ -504,7 +504,6 @@ def makeWebhookHotel(data):
     ImageUri = data[0].get('images')[0].get('uri')
     print(ImageUri)
     return {
-	"fulfillmentText":,
 	"fulfillmentMessages": 
 	 [
 		{
