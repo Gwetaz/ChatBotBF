@@ -148,7 +148,6 @@ def processRequest(req):
          lu = result.read()
          data = json.loads(lu)
          res = makeWebhookHotel(data)
-	 print(res)
 	 return res
 
     else:
