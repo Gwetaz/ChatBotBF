@@ -496,6 +496,12 @@ def makeWebhookHotel(data):
     data = data.get('data')
     if data is None:
         return {}
+    name = data[0].get('name') 
+    print(name)
+    prix = data[0].get('starting_price').get('amount')
+    print(prix)
+    ImageUri = data[0].get('images')[0].get('uri')
+    print(ImageUri)
    
     
     return {
@@ -506,11 +512,11 @@ def makeWebhookHotel(data):
 		     "platform": "ACTIONS_ON_GOOGLE",
 		     "basicCard": 
 		      {
-			 "title": data[0].get('name'),
-			 "formattedText": "Premier prix : "+data[0].get('starting_price').get('amount')+"€",
+			 "title": name,
+			 "formattedText": "Premier prix : "+prix+"€",
 			 "image": {
-			   "imageUri": data[0].get('images')[0].get('uri'),
-		           "accessibilityText": data[0].get('name')
+			   "imageUri": ImageUri,
+		           "accessibilityText": name
           		},
 			 "buttons":[
 				    {
