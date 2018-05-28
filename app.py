@@ -459,7 +459,7 @@ def makeWebhookQuartier(data):
     i = 0
     items = []
     print("avant while")
-    while ( i < len(data) ):
+     while ( i < len(data) ):
 	    tab ={}
 	    tab["info"] = {}
 	    tab.get("info")["key"] = "J'ai choisis : "+data[i].get('name')
@@ -496,7 +496,7 @@ def makeWebhookHotel(data):
     data = data.get('data')
     if data is None:
         return {}
-    
+   
     
     return {
 	
@@ -516,7 +516,7 @@ def makeWebhookHotel(data):
 				    {
 				      "title": "+ D'infos",
 				      "openUriAction": {
-					"uri": "http://stage.ngpb.io/hotel/00_32784"
+					"uri": "hbttp://stage.ngpb.io/hotel/00_32784"
 				      }
 				    }
 				   ]
