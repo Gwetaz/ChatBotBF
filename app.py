@@ -459,7 +459,7 @@ def makeWebhookQuartier(data):
     i = 0
     items = []
     print("avant while")
-     while ( i < len(data) ):
+    while ( i < len(data) ):
 	    tab ={}
 	    tab["info"] = {}
 	    tab.get("info")["key"] = "J'ai choisis : "+data[i].get('name')
