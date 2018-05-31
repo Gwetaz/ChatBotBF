@@ -150,6 +150,21 @@ def processRequest(req):
          res = makeWebhookHotel(data)
          print(res)
          return res
+	
+    elif req.get("queryResult").get("action") == "Services":
+         yql_query = makeHotelQuery(req)
+         print(yql_query)
+         yql_url = baseurl2 +"hotels?"+yql_query
+         print(yql_url)
+         URL = Request(yql_url)
+         print(URL)
+         result = urlopen(URL)
+         print(result)
+         lu = result.read()
+         data = json.loads(lu)
+         res = makeWebhookService(data)
+         print(res)
+         return res
 
     else:
            return {}
@@ -240,6 +255,7 @@ def makeHotelQuery(req):
 
 
     return nom
+
 
 
 
@@ -530,6 +546,30 @@ def makeWebhookHotel(data):
     }           
     
     
+def makeWebhookService(data,req):
+	
+    data = data.get('data')
+    if data is None:
+        return {}
+    TabServices = data[0].('facilityGroups')
+    LeService = req.get("ServicesHotels")
+    i = 0 
+    j = 0	
+    while ( i < len(TabServices) ):
+	print(i)
+	while ( j < len(TabServices[i].get('facilities'))):
+		print(j)
+		if (TabServices[i].get('facilities')[j] == LeService ):
+			 return {
+				"fulfillmentText": "L'hotel possède "+LeService
+			 }
+		j++
+	i++
+    return {
+	"fulfillmentText": "Le service n'est pas pris en charge par l'hotel" 
+	}
+	
+	       
 
 
 
