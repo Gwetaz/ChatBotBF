@@ -551,7 +551,7 @@ def makeWebhookService(data,req):
     data = data.get('data')
     if data is None:
         return {}
-    TabServices = data[0].('facilityGroups')
+    TabServices = data[0].get('facilityGroups')
     LeService = req.get("ServicesHotels")
     i = 0 
     j = 0	
