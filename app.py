@@ -566,7 +566,7 @@ def makeWebhookService(data,req):
                 print(j)
                 if (TabServices[i].get('facilities')[j] == LeService ):
                         return {
-                            "fulfillmentText": "L'hotel possède "+LeService
+                            "fulfillmentText": "L'hotel possède bien le service : "+LeService
 			 }
                 j+=1
         i+=1
