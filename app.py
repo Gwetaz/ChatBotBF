@@ -563,8 +563,8 @@ def makeWebhookService(data,req):
                         return {
                             "fulfillmentText": "L'hotel possède "+LeService
 			 }
-                j++
-         i++
+                j+=1
+         i+=1
     return {
 	"fulfillmentText": "Le service n'est pas pris en charge par l'hotel" 
 	}
