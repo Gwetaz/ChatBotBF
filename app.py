@@ -555,7 +555,7 @@ def makeWebhookService(data,req):
         return {}
     TabServices = data[0].get('facilityGroups')
     print(TabServices)
-    LeService = req.get("ServicesHotels")
+    LeService = req.get("parameters").get("ServicesHotels")
     print(LeService)
     i = 0 
     j = 0	
