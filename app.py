@@ -162,6 +162,7 @@ def processRequest(req):
          print(result)
          lu = result.read()
          data = json.loads(lu)
+	 print(data)
          res = makeWebhookService(data)
          print(res)
          return res
@@ -552,7 +553,9 @@ def makeWebhookService(data,req):
     if data is None:
         return {}
     TabServices = data[0].get('facilityGroups')
+    print(TabServices)
     LeService = req.get("ServicesHotels")
+    print(LeService)
     i = 0 
     j = 0	
     while ( i < len(TabServices) ):
