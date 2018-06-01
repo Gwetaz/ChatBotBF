@@ -182,7 +182,7 @@ def makeYqlQuery(req):
     depart = CodePort(context.get("PortsEnFrance"))
     print(depart)
     date = parameters.get("date")
-    dateMod = urlencode({ 'q' : date})[2:35]
+    dateMod = urlencode({ 'q' : date})[2:35] #Urlencode permet d'afficher le bont format de date
     print(dateMod)
     #On peut créer le contenu de l'URL et le retourner
     return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
@@ -253,16 +253,14 @@ def makeHotelQuery(req):
     param = result.get("parameters")
     context = result.get("outputContexts")
     nom = param.get("Hotels")
-    if len(nom) == 0: 
+    print(len(nom))
+    if len(nom) == 0 :  #Si le nom de l'hotel n'est pas dans les paramètres, on le cherche dans le contexte.
        print("rentré dans le if" )
-       nom = urlencode({'name' : context[0].get("parameters").get("Hotels") })
-	
+       nom = urlencode({'name' : context[0].get("parameters").get("Hotels") }) 
     else : 
        nom = urlencode({'name' : nom})
 
     print(nom)
-
-
     return nom
 
 
