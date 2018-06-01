@@ -252,11 +252,14 @@ def makeHotelQuery(req):
     result = req.get("queryResult")
     param = result.get("parameters")
     context = result.get("outputContexts")
-    nom = urlencode({'name' : param.get("Hotels")})
-    print(nom)
-    if nom == "None" :
+    nom = param.get("Hotels")
+    if len(nom) == 0 
        print("rentré dans le if" )
        nom = urlencode({'name' : context[0].get("parameters").get("Hotels") })
+	
+    else : 
+       nom = urlencode({'name' : nom})
+
     print(nom)
 
 
