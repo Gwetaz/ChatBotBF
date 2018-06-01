@@ -248,11 +248,12 @@ def makeQuartierQuery(req):
     return "neighborhood_slug="+desti
 
 def makeHotelQuery(req):
-    print("test")
+    print("entré dans makequery")
     result = req.get("queryResult")
     param = result.get("parameters")
     context = result.get("outputContexts")
     nom = param.get("Hotels")
+    print(nom)
     print(len(nom))
     if len(nom) == 0 :  #Si le nom de l'hotel n'est pas dans les paramètres, on le cherche dans le contexte.
        print("rentré dans le if" )
