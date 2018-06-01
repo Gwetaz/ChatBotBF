@@ -254,8 +254,7 @@ def makeHotelQuery(req):
     context = result.get("outputContexts")
     nom = param.get("Hotels")
     print(nom)
-    print(len(nom))
-    if len(nom) == 0 :  #Si le nom de l'hotel n'est pas dans les paramètres, on le cherche dans le contexte.
+    if nom is None :  #Si le nom de l'hotel n'est pas dans les paramètres, on le cherche dans le contexte.
        print("rentré dans le if" )
        nom = urlencode({'name' : context[0].get("parameters").get("Hotels") }) 
     else : 
