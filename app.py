@@ -407,7 +407,7 @@ def makeWebhookResult4(data,req):
     desti = param.get("PortEtranger")
     depart = param.get("PortsEnFrance")
     date = param.get("date")
-    print(date[7:9])
+    print(date)
     i = 0 
     data = data.get('data')
     if data is None:
@@ -450,7 +450,7 @@ def makeWebhookResult4(data,req):
               }
              ]
             }
-       
+    print("Apres While")   
     return {
                 "fulfillmentText": speech,
                 "fulfillmentMessages": [
