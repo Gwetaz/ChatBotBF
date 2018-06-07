@@ -182,7 +182,7 @@ def makeYqlQuery(req):
     depart = CodePort(context.get("PortsEnFrance"))
     print(depart)
     date = parameters.get("date")
-    dateMod = urlencode({ 'q' : date})[2:35] #Urlencode permet d'afficher le bont format de date
+    dateMod = urlencode({ 'q' : date})[2:41] #Urlencode permet d'afficher le bont format de date
     print(dateMod)
     #On peut créer le contenu de l'URL et le retourner
     return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
@@ -198,7 +198,7 @@ def makeYqlQuery2(req):
     depart = CodePort(context.get("PortsEnFrance"))
     print(depart)
     date = parameters.get("date")
-    dateMod = urlencode({ 'q' : date})[2:35]
+    dateMod = urlencode({ 'q' : date})[2:41]
     print(dateMod)
 
     return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
@@ -215,7 +215,7 @@ def makeYqlQuery3(req):
     depart = CodePort(context.get("PortsEnFrance"))
     print(depart)
     date = parameters.get("date")
-    dateMod = urlencode({ 'q' : date})[2:35]
+    dateMod = urlencode({ 'q' : date})[2:41]
     print(dateMod)
 
     return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
@@ -231,7 +231,7 @@ def makeYqlQuery4(req):
     print(depart)
     ship = param.get("Ferry")
     date = param.get("date")
-    dateMod = urlencode({ 'q' : date})[8:40]
+    dateMod = urlencode({ 'q' : date})[8:41]
     print(dateMod)
 
     return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
