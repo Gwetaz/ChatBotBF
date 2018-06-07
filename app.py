@@ -27,13 +27,13 @@ baseurl = "https://brittany-ferries-holidays-api-ferries-apis.ngpb.io/v1/"
 baseurl2 = "https://brittany-ferries-holidays-api-hotels-proxy.ngpb.io/v1/" 
 
 #Définition du webhook :
-@app.route('/webhook', methods=['POST'])
+@app.route('/webhook', methods=['POST']) 
 def webhook():
     req = request.get_json(silent=True, force=True) #Récupération du JSON envoyé par Dialogflow
-    print (sys.version)
+    print (sys.version) #Les prints servent à tester que tout fonctionne correctement.
     print("Request:")
     print("test Avant dumps")
-    print(json.dumps(req, indent=4))
+    print(json.dumps(req, indent=4)) #Transforme l'objet Json en String
     
     print("test Avant processReq")
     print(req)
