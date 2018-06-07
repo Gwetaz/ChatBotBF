@@ -231,7 +231,7 @@ def makeYqlQuery4(req):
     print(depart)
     ship = param.get("Ferry")
     date = param.get("date")
-    dateMod = urlencode({ 'q' : date})[8:35]
+    dateMod = urlencode({ 'q' : date})[8:40]
     print(dateMod)
 
     return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
