@@ -450,8 +450,8 @@ def makeWebhookResult4(data,req):
               }
              ]
             }
-        else :
-             return {
+       
+    return {
                 "fulfillmentText": speech,
                 "fulfillmentMessages": [
               {
