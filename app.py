@@ -283,7 +283,7 @@ def makeWebhookResult(data,req):
     dateD = data[0].get('departure').get('datetime')
     
     #On prépare le " Default Message qui sera envoyé à l'utilisateur"
-    speech = " Le "+ship+" prend la mer pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h , réservez maintenant !"
+    speech = " Le "+ship+" prend la mer pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h GMT , réservez maintenant !"
     print(speech)
     
     #Envois du message au format accepté par DialogFlow
@@ -329,7 +329,7 @@ def makeWebhookResult2(data,req):
     dateD = data[0].get('departure').get('datetime')
     
     
-    speech = " Le "+ship+" prend la mer pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h , réservez maintenant !"
+    speech = " Le "+ship+" prend la mer pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h GMT , réservez maintenant !"
     print(speech)
     
     return {
@@ -374,7 +374,7 @@ def makeWebhookResult3(data,req):
     dateD = data[0].get('departure').get('datetime')
     
     
-    speech = " Le "+ship+" prend la mer pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h , réservez maintenant !"
+    speech = " Le "+ship+" prend la mer pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h GMT , réservez maintenant !"
     print(speech)
     
     return {
@@ -416,18 +416,18 @@ def makeWebhookResult4(data,req):
     print(bato)      
     ship = data[i].get('ship_name')
     dateD = data[i].get('departure').get('datetime')
-    speech = " Le "+ship+" prend la mer à "+depart+" pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h "
+    speech = " Le "+ship+" prend la mer à "+depart+" pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h GMT "
   
     while (ship != bato ): 
         i = i+1
         ship = data[i].get('ship_name')
         dateD = data[i].get('departure').get('datetime')
-        speech = " Le "+ship+" prend la mer à "+depart+" pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h "
+        speech = " Le "+ship+" prend la mer à "+depart+" pour "+desti+" le "+dateD[8:10]+"/"+dateD[5:7]+" à "+dateD[11:16]+"h GMT"
         print(speech)
         if ( dateD[8:10] != date[7:9] ):
             ship = data[0].get('ship_name')
             dateD = data[0].get('departure').get('datetime')
-            speech = "A cette date("+dateD[8:10]+"/"+dateD[5:7]+") c'est "+ship+" qui prend la mer à "+depart+" pour "+desti+" à "+dateD[11:16]+"h" 
+            speech = "A cette date("+dateD[8:10]+"/"+dateD[5:7]+") c'est "+ship+" qui prend la mer à "+depart+" pour "+desti+" à "+dateD[11:16]+"h GMT" 
             print(speech)   
             return {
                 "fulfillmentText": speech,
