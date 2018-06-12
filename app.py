@@ -198,7 +198,7 @@ def makeYqlQuery2(req):
     depart = CodePort(context.get("PortsEnFrance"))
     print(depart)
     date = parameters.get("date")
-    dateMod = urlencode({ 'q' : date})[8:41]
+    dateMod = urlencode({ 'q' : date})[2:35]
     print(dateMod)
 
     return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
