@@ -209,11 +209,11 @@ def makeYqlQuery3(req):
     result = req.get("queryResult")
     parameters = result.get("parameters")
     contexttab = result.get("outputContexts")
-    context = contexttab[1].get("parameters")
+    context = contexttab[0].get("parameters")
     print(context)
-    desti = CodePort(context.get("Portpool"))
+    desti = CodePort(context.get("CherDest"))
     print(desti)
-    depart = CodePort(context.get("PortsEnFrance"))
+    depart = CodePort("Cherbourg")
     print(depart)
     date = parameters.get("date")
     dateMod = urlencode({ 'q' : date})[2:35]
@@ -363,8 +363,8 @@ def makeWebhookResult3(data,req):
     result = req.get("queryResult")
     parameters = result.get("parameters")
     contexttab = result.get("outputContexts")
-    context = contexttab[1].get("parameters")
-    desti = context.get("Portpool")
+    context = contexttab[0].get("parameters")
+    desti = context.get("CherDest")
     
     data = data.get('data')
     if data is None:
