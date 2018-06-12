@@ -175,7 +175,7 @@ def makeYqlQuery(req):
     result = req.get("queryResult") #On récupère les données issus de DialogFlow
     parameters = result.get("parameters") #On stock ces données dans différentes variables
     contexttab = result.get("outputContexts")
-    context = contexttab[1].get("parameters")
+    context = contexttab[0].get("parameters")
     print(context)
     desti = CodePort(context.get("PortPlym"))
     print(desti)
