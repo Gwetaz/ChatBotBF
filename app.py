@@ -182,7 +182,7 @@ def makeYqlQuery(req):
     depart = CodePort(context.get("PortsEnFrance"))
     print(depart)
     date = parameters.get("date")
-    dateMod = urlencode({ 'q' : date})[8:41] #Urlencode permet d'afficher le bont format de date
+    dateMod = urlencode({ 'q' : date})[2:35] #Urlencode permet d'afficher le bont format de date
     print(dateMod)
     #On peut créer le contenu de l'URL et le retourner
     return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
@@ -215,7 +215,7 @@ def makeYqlQuery3(req):
     depart = CodePort(context.get("PortsEnFrance"))
     print(depart)
     date = parameters.get("date")
-    dateMod = urlencode({ 'q' : date})[8:41]
+    dateMod = urlencode({ 'q' : date})[2:35]
     print(dateMod)
 
     return "departure_ports="+depart+"&arrival_ports="+desti+"&date_from="+dateMod
@@ -587,7 +587,7 @@ def makeWebhookService(data,req):
 
 
 def CodePort(por):
-    choices = {"Le Havre":"FRLEH","Portsmouth":"GBPME","Bilbao":"ESBIO","Plymouth":"GBPLY","Cork":"IEORK","Roscoff":"FRROS","Poole":"GBPOO","Cherbourg":"FRCER","St Malo":"FRSML","Ouistrham":"FROUI","Santander":"ESSDR"}
+    choices = {"Le Havre":"FRLEH","Portsmouth":"GBPME","Bilbao":"ESBIO","Plymouth":"GBPLY","Cork":"IEORK","Roscoff":"FRROS","Poole":"GBPOO","Cherbourg":"FRCER","St Malo":"FRSML","Ouistreham":"FROUI","Santander":"ESSDR","Caen":"FR"}
     result = choices.get(por, '')
     return result
 
