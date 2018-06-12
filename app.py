@@ -170,6 +170,7 @@ def processRequest(req):
     else:
            return {}
 
+#Création des URL de connexion aux APIs : 
 
 def makeYqlQuery(req):
     result = req.get("queryResult") #On récupère les données issus de DialogFlow
@@ -264,7 +265,7 @@ def makeHotelQuery(req):
     return nom
 
 
-
+#Création des réponses :
 
 def makeWebhookResult(data,req):
     
@@ -273,7 +274,7 @@ def makeWebhookResult(data,req):
     contexttab = result.get("outputContexts")
     context = contexttab[0].get("parameters")
     desti = context.get("RoscDest")
-    
+    print(desti)
     data = data.get('data')
     if data is None:
         return {}
