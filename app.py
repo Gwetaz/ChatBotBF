@@ -177,9 +177,9 @@ def makeYqlQuery(req):
     contexttab = result.get("outputContexts")
     context = contexttab[0].get("parameters")
     print(context)
-    desti = CodePort(context.get("PortPlym"))
+    desti = CodePort(context.get("RoscDest"))
     print(desti)
-    depart = CodePort(context.get("PortsEnFrance"))
+    depart = CodePort("Roscoff")
     print(depart)
     date = parameters.get("date")
     dateMod = urlencode({ 'q' : date})[2:35] #Urlencode permet d'afficher le bont format de date
@@ -271,8 +271,8 @@ def makeWebhookResult(data,req):
     result = req.get("queryResult") #On récupère les différentes informations dans le message précédent(req) ou dans le résultat de l'API (data) 
     parameters = result.get("parameters")
     contexttab = result.get("outputContexts")
-    context = contexttab[1].get("parameters")
-    desti = context.get("PortPlym")
+    context = contexttab[0].get("parameters")
+    desti = context.get("RoscDest")
     
     data = data.get('data')
     if data is None:
